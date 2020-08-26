@@ -1,0 +1,19 @@
+<mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               (page)="pageEvent = $event">
+
+</mat-paginator>
+
+<div  *ngIf="pageEvent">
+
+    <mat-grid-list cols="1" rowHeight="10:1">
+      <ng-container>
+        <mat-grid-tile *ngFor="let i of numbers">
+            <p *ngIf="getRoom(getPageIndex()*pageSize + i)">
+                {{ getRoom(getPageIndex()*pageSize + i).description }} with id {{ getRoom(getPageIndex()*pageSize + i).id }}
+            </p>
+        </mat-grid-tile>
+      </ng-container>
+    </mat-grid-list>
+
+</div>
