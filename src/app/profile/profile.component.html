@@ -5,21 +5,25 @@
     </h3>
   </header>
   <p>
-    <strong>Name:</strong>
-    {{ fullCurrentUser.name }}
+    <strong>Name: </strong><br>
+     <input class="form-control" [(ngModel)]="fullCurrentUser.name"/>
   </p>
   <p>
-    <strong>Surname:</strong>
-    {{ fullCurrentUser.surname }}
+    <strong>Surname: </strong><br>
+    <input class="form-control" [(ngModel)]="fullCurrentUser.surname"/>
   </p>
   <p>
-    <strong>Email:</strong>
-    {{ fullCurrentUser.email }}
+    <strong>Email: </strong><br>
+    <input class="form-control" [(ngModel)]="fullCurrentUser.email"/>
   </p>
   <p>
-    <strong>Phone:</strong>
-    {{ fullCurrentUser.phone }}
+    <strong>Phone: </strong><br>
+    <input class="form-control" [(ngModel)]="fullCurrentUser.phone"/>
   </p>
+
+  <br>
+  <button type="button" class="btn btn-primary" (click)="save()">save</button>
+
 </div>
 
 <div *ngIf="errorMessage">

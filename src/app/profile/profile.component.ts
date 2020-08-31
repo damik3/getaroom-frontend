@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { TokenStorageService } from '../services/token-storage.service';
-import {UserService} from '../services/user.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,10 +10,12 @@ import {UserService} from '../services/user.service';
 })
 export class ProfileComponent implements OnInit {
   currentUser: any;
-  fullCurrentUser: any;
-  errorMessage = null;
+  @Input() fullCurrentUser: any;
+  @Input() errorMessage = null;
 
-  constructor(private token: TokenStorageService, private userService: UserService) { }
+  constructor(private token: TokenStorageService,
+              private userService: UserService
+  ) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
@@ -26,4 +28,13 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+  reload(): void {
+      window.location.reload();
+  }
+
+  save(): void {
+      this.userService.updateUser(this.fullCurrentUser).subscribe(() => this.reload());
+  }
+
 }
