@@ -1,0 +1,35 @@
+<div *ngIf="room; else noRoom" class="container">
+
+  <header class="jumbotron">
+    <h3>
+      <strong>Room {{ room.id }}</strong> details.
+    </h3>
+  </header>
+
+  <p>
+    <label><strong>Description: </strong></label><br>
+    {{ room.description }}
+  </p>
+
+  <p>
+    <label><strong>Address: </strong></label><br>
+    {{ room.address }}
+  </p>
+
+  <p>
+    <label><strong>Number of beds: </strong></label><br>
+    {{ room.numBeds }}
+  </p>
+
+  <p>
+    <label><strong>Price per day: </strong></label><br>
+    {{ room.pricePerDay }}
+  </p>
+
+</div>
+
+<ng-template #noRoom>
+  <p>
+    Invalid room number!
+  </p>
+</ng-template>

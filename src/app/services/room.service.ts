@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:8080/api/rooms'
+const API_URL = 'http://localhost:8080/api/rooms/';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +13,9 @@ export class RoomService {
 
   getAll(): Observable<any> {
     return this.http.get(API_URL, { responseType: 'json' });
+  }
+
+  get(id: string): Observable<any> {
+    return this.http.get(API_URL + id, { responseType: 'json' });
   }
 }

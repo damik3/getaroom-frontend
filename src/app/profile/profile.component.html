@@ -1,35 +1,41 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
+<div class="container" *ngIf="currentUser && fullCurrentUser; else loggedOut">
   <header class="jumbotron">
     <h3>
       <strong>{{ currentUser.username }}</strong> Profile
     </h3>
   </header>
   <p>
-    <strong>Name: </strong><br>
+    <label><strong>Name: </strong></label><br>
      <input class="form-control" [(ngModel)]="fullCurrentUser.name"/>
   </p>
   <p>
-    <strong>Surname: </strong><br>
+    <label><strong>Surname: </strong></label><br>
     <input class="form-control" [(ngModel)]="fullCurrentUser.surname"/>
   </p>
   <p>
-    <strong>Email: </strong><br>
+    <label><strong>Email: </strong></label><br>
     <input class="form-control" [(ngModel)]="fullCurrentUser.email"/>
   </p>
   <p>
-    <strong>Phone: </strong><br>
+    <label><strong>Phone: </strong></label><br>
     <input class="form-control" [(ngModel)]="fullCurrentUser.phone"/>
   </p>
+
+  <div *ngIf="fullCurrentUser.rooms">
+      <label><strong>Owner of: </strong></label><br>
+      <ul class="list-group" *ngFor="let room of fullCurrentUser.rooms">
+          <li class="list-group-item list-group-item-action">{{ room.id }}</li>
+      </ul>
+  </div>
+
 
   <br>
   <button type="button" class="btn btn-primary" (click)="save()">save</button>
 
 </div>
 
-<div *ngIf="errorMessage">
-    Error: {{ errorMessage }}
-</div>
-
 <ng-template #loggedOut>
-  Please login.
+  <p>
+    Please login.
+  </p>
 </ng-template>

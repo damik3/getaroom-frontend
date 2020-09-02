@@ -15,6 +15,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { RoomDetailsComponent } from './room-details/room-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
     RoomComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    RoomDetailsComponent
   ],
   imports: [
     BrowserModule,
