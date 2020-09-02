@@ -6,13 +6,15 @@
 
 <div  *ngIf="pageEvent">
 
-    <mat-grid-list cols="1" rowHeight="10:1">
+    <mat-grid-list cols="2" rowHeight="2:1">
       <ng-container>
-        <mat-grid-tile *ngFor="let i of numbers">
-            <p *ngIf="getRoom(getPageIndex()*pageSize + i)">
-                {{ getRoom(getPageIndex()*pageSize + i).description }} with id {{ getRoom(getPageIndex()*pageSize + i).id }}
-            </p>
-        </mat-grid-tile>
+        <div *ngFor="let i of numbers">
+            <mat-grid-tile *ngIf="getRoom(getPageIndex()*pageSize + i)">
+                <a routerLink="/room/{{getRoom(getPageIndex()*pageSize + i).id}}">
+                    {{ getRoom(getPageIndex()*pageSize + i).description }} with id {{ getRoom(getPageIndex()*pageSize + i).id }}
+                </a>
+            </mat-grid-tile>
+        </div>
       </ng-container>
     </mat-grid-list>
 

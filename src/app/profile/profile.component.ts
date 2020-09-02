@@ -10,12 +10,11 @@ import { UserService } from '../services/user.service';
 })
 export class ProfileComponent implements OnInit {
   currentUser: any;
-  @Input() fullCurrentUser: any;
-  @Input() errorMessage = null;
+  fullCurrentUser: any;
+  errorMessage: any;
 
   constructor(private token: TokenStorageService,
-              private userService: UserService
-  ) { }
+              private userService: UserService) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();

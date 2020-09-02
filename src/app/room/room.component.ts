@@ -15,7 +15,7 @@ export class RoomComponent implements OnInit {
 
   // MatPaginator inputs
   length: number;
-  pageSize = 5;
+  pageSize = 4;
 
   // MatPaginator output
   pageEvent: PageEvent;
@@ -25,7 +25,7 @@ export class RoomComponent implements OnInit {
   ngOnInit(): void {
     this.pageEvent = new PageEvent();
 
-    this.numbers = Array(this.pageSize).fill(1).map((x,i)=>i); // [0,1,2,3,4]
+    this.numbers = Array(this.pageSize).fill(1).map((x, i) => i); // [0,1,2,3,4]
 
     this.roomService.getAll().subscribe(
       data => {
@@ -48,8 +48,9 @@ export class RoomComponent implements OnInit {
   }
 
   getRoom(i: number) {
-      if (!this.length)
+      if (!this.length) {
         return null;
+      }
 
       if ((i < 0) || (this.length <= i)) {
           return null;
