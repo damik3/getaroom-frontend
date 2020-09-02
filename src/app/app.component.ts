@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   private roles: string[];
   isLoggedIn = false;
   username: string;
+  showAddRoomOption = false;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -20,6 +21,9 @@ export class AppComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
       this.username = user.username;
+
+      this.showAddRoomOption = this.roles.includes('ROLE_HOST');
+      console.log('roles = ' + JSON.stringify(this.roles));
     }
   }
 

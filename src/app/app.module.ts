@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { RoomDetailsComponent } from './room-details/room-details.component';
+import { AddARoomComponent } from './add-a-room/add-a-room.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RoomDetailsComponent } from './room-details/room-details.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    RoomDetailsComponent
+    RoomDetailsComponent,
+    AddARoomComponent
   ],
   imports: [
     BrowserModule,

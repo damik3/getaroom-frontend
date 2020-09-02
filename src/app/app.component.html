@@ -23,6 +23,9 @@
       <li class="nav-item">
         <a href="/profile" class="nav-link">{{ username }}</a>
       </li>
+      <li class="nav-item" *ngIf="showAddRoomOption">
+        <a routerLink="/add-a-room" class="nav-link">Add a room</a>
+      </li>
       <li class="nav-item">
         <a href class="nav-link" (click)="logout()">LogOut</a>
       </li>

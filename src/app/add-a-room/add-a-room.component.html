@@ -1,0 +1,9 @@
+<div class="container" *ngIf="currentUser && isHost; else loggedOut">
+  You can add a room now!
+</div>
+
+<ng-template #loggedOut>
+  <p>
+    You are not authorized to this action!
+  </p>
+</ng-template>
