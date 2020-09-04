@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomService } from '../services/room.service';
 import { ActivatedRoute } from '@angular/router';
+import { Room } from '../room';
 
 @Component({
   selector: 'app-room-details',
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RoomDetailsComponent implements OnInit {
 
-  room: any;
+  room: Room;
 
   constructor(private roomService: RoomService,
               private route: ActivatedRoute

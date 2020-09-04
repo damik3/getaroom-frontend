@@ -2,13 +2,28 @@
 
   <header class="jumbotron">
     <h3>
-      <strong>Room {{ room.id }}</strong> details.
+      <strong>Room {{ room.id }}, {{ room.title }} details.</strong>
     </h3>
   </header>
 
   <p>
     <label><strong>Description: </strong></label><br>
     {{ room.description }}
+  </p>
+
+  <p>
+    <label><strong>Country: </strong></label><br>
+    {{ room.country }}
+  </p>
+
+  <p>
+    <label><strong>City: </strong></label><br>
+    {{ room.city }}
+  </p>
+
+  <p>
+    <label><strong>Area: </strong></label><br>
+    {{ room.area }}
   </p>
 
   <p>

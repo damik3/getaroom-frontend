@@ -7,6 +7,26 @@
 
   <form>
     <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" class="form-control" [(ngModel)]="room.title" name="title">
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input id="country" class="form-control" [(ngModel)]="room.country" name="country">
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input id="city" class="form-control" [(ngModel)]="room.city" name="city">
+    </div>
+
+    <div class="form-group">
+      <label for="area">Area</label>
+      <input id="area" class="form-control" [(ngModel)]="room.area" name="area">
+    </div>
+
+    <div class="form-group">
       <label for="address">Address</label>
       <input id="address" class="form-control" [(ngModel)]="room.address" name="address">
     </div>
