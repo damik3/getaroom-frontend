@@ -1,5 +1,38 @@
 <div class="container" *ngIf="currentUser && isHost; else loggedOut">
-  You can add a room now!
+  <header class="jumbotron">
+    <h3>
+      <strong>Add a room now!</strong>
+    </h3>
+  </header>
+
+  <form>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input id="address" class="form-control" [(ngModel)]="room.address" name="address">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input id="description" class="form-control" [(ngModel)]="room.description" name="description">
+    </div>
+
+    <div class="form-group">
+      <label for="numBeds">Number of beds</label>
+      <input id="numBeds" class="form-control" [(ngModel)]="room.numBeds" name="numBeds">
+    </div>
+
+    <div class="form-group">
+      <label for="pricePerDay">Price per day</label>
+      <input id="pricePerDay" class="form-control" [(ngModel)]="room.pricePerDay" name="pricePerDay">
+    </div>
+
+    <button type="submit" class="btn btn-primary " (click)="save()">Submit</button>
+  </form>
+
+  <div *ngIf="success">
+    <h3>You just added a room! Now go get one boi!</h3>
+  </div>
+
 </div>
 
 <ng-template #loggedOut>

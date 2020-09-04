@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
       this.username = user.username;
 
       this.showAddRoomOption = this.roles.includes('ROLE_HOST');
-      console.log('roles = ' + JSON.stringify(this.roles));
     }
   }
 
