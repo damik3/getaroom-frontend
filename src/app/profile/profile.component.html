@@ -31,6 +31,12 @@
     </ul>
 
   <br>
+  <div class="alert alert-danger" *ngIf="invalidInput">
+    Please, fill out all fields!
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="success">
+    Success!
+  </div>
   <button type="button" class="btn btn-primary" (click)="save()">save</button>
 
 </div>
