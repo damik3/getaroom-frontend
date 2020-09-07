@@ -11,4 +11,9 @@ export class Room {
   description: string;
   numBeds: number;
   pricePerDay: number;
+
+  constructor() {
+      this.owner = new User();
+      console.log('MOLIS TO EFTIAXA BRO');
+  }
 }

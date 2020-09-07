@@ -5,4 +5,6 @@ export class User {
   name: string;
   surname: string;
   phone: string;
+
+  constructor() {}
 }
