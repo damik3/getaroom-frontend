@@ -6,6 +6,7 @@
   </header>
 
   <form>
+
     <div class="form-group">
       <label for="title">Title</label>
       <input id="title" class="form-control" [(ngModel)]="room.title" name="title"
@@ -48,12 +49,14 @@
       <input required id="pricePerDay" class="form-control" [(ngModel)]="room.pricePerDay" name="pricePerDay">
     </div>
 
+    <div class="alert alert-danger" role="alert" *ngIf="invalidInput">
+      Please, fill out all fields!
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="success">
+      You just added a room! Now go get one boi!
+    </div>
     <button type="submit" class="btn btn-primary " (click)="save()">Submit</button>
   </form>
-
-  <div *ngIf="success">
-    <h3>You just added a room! Now go get one boi!</h3>
-  </div>
 
 </div>
 

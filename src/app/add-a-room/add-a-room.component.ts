@@ -15,15 +15,17 @@ export class AddARoomComponent implements OnInit {
   isHost: any;
   room: Room;
   success: boolean;
+  invalidInput: boolean;
 
   constructor(private token: TokenStorageService,
               private roomService: RoomService) { }
 
   ngOnInit(): void {
-    this.success = false;
     this.currentUser = this.token.getUser();
     this.room = new Room();
     this.room.owner.id = this.currentUser.id;
+    this.success = false;
+    this.invalidInput = false;
 
     if (this.currentUser) {
       this.isHost = this.currentUser.roles.includes('ROLE_HOST');
@@ -41,10 +43,13 @@ export class AddARoomComponent implements OnInit {
         !this.room.numBeds ||
         !this.room.pricePerDay) {
       console.log('INPUT ERROR');
+      this.invalidInput = true;
+      this.success = false;
       return;
     }
 
     console.log('Gonna save ' + JSON.stringify(this.room));
+    this.invalidInput = false;
 
     this.roomService.put(this.room).subscribe(
       () => {
