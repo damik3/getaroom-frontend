@@ -5,5 +5,66 @@
       </h3>
     </header>
 
-    Home works!
+  <p class="h4 mb-4">Search</p>
+
+  <!-- Country -->
+  <div class="input-group mb-3">
+    <input id="country" class="form-control mb-4" placeholder="Country">
+  </div>
+
+  <!-- City -->
+  <div class="input-group mb-3">
+    <input id="City" class="form-control mb-4" placeholder="City">
+  </div>
+
+  <!-- Area -->
+  <div class="input-group mb-3">
+    <input id="Area" class="form-control mb-4" placeholder="Area">
+  </div>
+
+  <!-- Number of Persons -->
+  <div class="input-group mb-3">
+    <input id="NumPersons" class="form-control mb-4" placeholder="Number of persons">
+  </div>
+
+  <!-- Date From -->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="DateFrom">From (YYYY-MM-DD)</label>
+    </div>
+    <select class="custom-select" id="DateFrom">
+      <option selected>2020</option>
+      <option value="1">2021</option>
+    </select>
+    <select class="custom-select" data-flip="false">
+      <option selected>1</option>
+      <option *ngFor="let m of months">{{ m }}</option>
+    </select>
+    <select class="custom-select">
+      <option selected>1</option>
+      <option *ngFor="let m of days">{{ m }}</option>
+    </select>
+  </div>
+
+  <!-- Date To -->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="DateTo">To &nbsp; &nbsp; &nbsp;(YYYY-MM-DD)</label>
+    </div>
+    <select class="custom-select" id="DateTo">
+      <option selected>2020</option>
+      <option value="1">2021</option>
+    </select>
+    <select class="custom-select" data-flip="false">
+      <option selected>1</option>
+      <option *ngFor="let m of months">{{ m }}</option>
+    </select>
+    <select class="custom-select">
+      <option selected>1</option>
+      <option *ngFor="let m of days">{{ m }}</option>
+    </select>
+  </div>
+
+    <!-- Do search button -->
+    <button class="btn btn-info btn-block my-4" type="submit">Search</button>
 </div>
