@@ -9,62 +9,61 @@
 
   <!-- Country -->
   <div class="input-group mb-3">
-    <input id="country" class="form-control mb-4" placeholder="Country">
+    <input id="country" class="form-control mb-4" placeholder="Country (required)" [(ngModel)]="query.country">
   </div>
 
   <!-- City -->
   <div class="input-group mb-3">
-    <input id="City" class="form-control mb-4" placeholder="City">
+    <input id="City" class="form-control mb-4" placeholder="City" [(ngModel)]="query.city">
   </div>
 
   <!-- Area -->
   <div class="input-group mb-3">
-    <input id="Area" class="form-control mb-4" placeholder="Area">
+    <input id="Area" class="form-control mb-4" placeholder="Area" [(ngModel)]="query.area">
   </div>
 
   <!-- Number of Persons -->
   <div class="input-group mb-3">
-    <input id="NumPersons" class="form-control mb-4" placeholder="Number of persons">
+    <input id="NumPersons" class="form-control mb-4" placeholder="Number of persons (required)" [(ngModel)]="query.numBeds">
   </div>
 
   <!-- Date From -->
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <label class="input-group-text" for="DateFrom">From (YYYY-MM-DD)</label>
+      <label class="input-group-text" for="DateFrom">From (YYYY-MM-DD) (required)</label>
     </div>
-    <select class="custom-select" id="DateFrom">
-      <option selected>2020</option>
-      <option value="1">2021</option>
+    <select class="custom-select" id="DateFrom" [(ngModel)]="dateFrom.year">
+      <option *ngFor="let y of years">{{ y }}</option>
     </select>
-    <select class="custom-select" data-flip="false">
-      <option selected>1</option>
+    <select class="custom-select" [(ngModel)]="dateFrom.month">
       <option *ngFor="let m of months">{{ m }}</option>
     </select>
-    <select class="custom-select">
-      <option selected>1</option>
-      <option *ngFor="let m of days">{{ m }}</option>
+    <select class="custom-select" [(ngModel)]="dateFrom.day">
+      <option *ngFor="let d of days">{{ d }}</option>
     </select>
   </div>
 
   <!-- Date To -->
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <label class="input-group-text" for="DateTo">To &nbsp; &nbsp; &nbsp;(YYYY-MM-DD)</label>
+      <label class="input-group-text" for="DateTo">To &nbsp; &nbsp; &nbsp;(YYYY-MM-DD) (required)</label>
     </div>
-    <select class="custom-select" id="DateTo">
-      <option selected>2020</option>
-      <option value="1">2021</option>
+    <select class="custom-select" id="DateTo" [(ngModel)]="dateTo.year">
+      <option *ngFor="let y of years">{{ y }}</option>
     </select>
-    <select class="custom-select" data-flip="false">
-      <option selected>1</option>
+    <select class="custom-select" data-flip="false" [(ngModel)]="dateTo.month">
       <option *ngFor="let m of months">{{ m }}</option>
     </select>
-    <select class="custom-select">
-      <option selected>1</option>
-      <option *ngFor="let m of days">{{ m }}</option>
+    <select class="custom-select" [(ngModel)]="dateTo.day">
+      <option *ngFor="let d of days">{{ d }}</option>
     </select>
   </div>
 
+  <div class="alert alert-danger" role="alert" *ngIf="invalidInput">
+    Please, fill out all required fields!
+  </div>
+
     <!-- Do search button -->
-    <button class="btn btn-info btn-block my-4" type="submit">Search</button>
+  <button class="btn btn-info btn-block my-4" type="submit" (click)="search()">Search</button>
+
 </div>
