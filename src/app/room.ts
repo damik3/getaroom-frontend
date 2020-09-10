@@ -14,6 +14,16 @@ export class Room {
 
   constructor() {
       this.owner = new User();
-      console.log('MOLIS TO EFTIAXA BRO');
+  }
+
+  set(r: Room): void {
+    this.id = r.id;
+    this.title = r.title;
+    this.country = r.country;
+    this.city = r.city;
+    this.address = r.address;
+    this.description = r.description;
+    this.numBeds = r.numBeds;
+    this.pricePerDay = r.pricePerDay;
   }
 }

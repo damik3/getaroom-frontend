@@ -17,6 +17,12 @@ export class MyDate {
     this.day = day;
   }
 
+  set2(date: MyDate): void {
+    this.day = date.day;
+    this.month = date.month;
+    this.year = date.year;
+  }
+
   isValid(): boolean {
     return (this.year >= currYear) && (this.year <= currYear + 1)
       && (this.month >= 1) && (this.month <= 12)

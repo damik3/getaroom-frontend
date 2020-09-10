@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RoomService } from '../services/room.service';
 import { PageEvent } from '@angular/material/paginator';
 import {ActivatedRoute} from '@angular/router';
 import {SearchQuery} from '../search-query';
+import {ReservationService} from '../services/reservation.service';
 
 @Component({
   selector: 'app-room',
@@ -23,20 +24,31 @@ export class RoomComponent implements OnInit {
 
   query: SearchQuery;
   showAll: boolean;
+  err: boolean;
 
 
 
   constructor(private roomService: RoomService,
-              private readonly activatedRoute: ActivatedRoute) { }
+              private readonly activatedRoute: ActivatedRoute,
+              private reservationService: ReservationService) { }
 
 
 
   ngOnInit(): void {
 
+    console.log('MESSAJ EST ' + this.reservationService.get());
+    if (this.reservationService.dateFrom.isValid()) {
+      console.log('dateFrom = ' + this.reservationService.dateFrom.toString());
+    }
+    if (this.reservationService.dateTo.isValid()) {
+      console.log('dateTo = ' + this.reservationService.dateTo.toString());
+    }
+
     this.pageEvent = new PageEvent();
     this.numbers = Array(this.pageSize).fill(1).map((x, i) => i); // [0,1,2,3,4]
     this.query = new SearchQuery();
     this.showAll = false;
+    this.err = false;
 
 
 
@@ -64,6 +76,10 @@ export class RoomComponent implements OnInit {
           data => {
             this.rooms = data;
             this.length = data.length;
+            this.err = false;
+          },
+          () => {
+            this.err = true;
           }
         );
       }
@@ -75,6 +91,10 @@ export class RoomComponent implements OnInit {
           data => {
             this.rooms = data;
             this.length = data.length;
+            this.err = false;
+          },
+          () => {
+            this.err = true;
           }
         );
       }

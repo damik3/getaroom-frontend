@@ -41,6 +41,8 @@
     {{ room.pricePerDay }}
   </p>
 
+  <button *ngIf="currentUser" type="button" class="btn btn-primary" (click)="book()">Book now!</button>
+
 </div>
 
 <ng-template #noRoom>

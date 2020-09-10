@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchQuery } from '../search-query';
 import { MyDate } from '../my-date';
-import {Router} from '@angular/router';
-import {Validate} from '../helpers/validate';
+import { Router } from '@angular/router';
+import { Validate } from '../helpers/validate';
+import { ReservationService } from '../services/reservation.service';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
   dateTo: MyDate;
   invalidInput = false;
 
-  constructor(private readonly router: Router) {
+  constructor(private readonly router: Router,
+              private reservationService: ReservationService) {
     this.query = new SearchQuery();
     this.dateFrom = new MyDate();
     this.dateFrom.set(2020, 1, 1);
@@ -59,8 +61,13 @@ export class HomeComponent implements OnInit {
     // ...???
     const queryParams = this.query;
 
+    this.reservationService.set('HOLA');
+    console.log('HOLA IS SET');
+    this.reservationService.dateFrom.set2(this.dateFrom);
+    this.reservationService.dateTo.set2(this.dateTo);
+
     // Send data to ResultsComponent
-    this. router.navigate(['/', 'rooms'], {
+    this.router.navigate(['/', 'rooms'], {
       queryParams
     });
   }
