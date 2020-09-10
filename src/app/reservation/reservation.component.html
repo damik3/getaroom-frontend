@@ -1,0 +1,28 @@
+<header class="jumbotron">
+  <h3>
+    <strong>Make a reservation now</strong>
+  </h3>
+</header>
+
+<h3>Gonna make a reservation for room</h3>
+
+<p>
+  <label><strong>Title: </strong></label><br>
+  {{ room.title }}
+</p>
+
+<p>
+  <label><strong>Location: </strong></label><br>
+  {{ room.country }}, {{ room.city }}, {{ room.area }}, {{ room.address }}
+</p>
+
+<p>
+  <label><strong>Number of beds: </strong></label><br>
+  {{ room.numBeds }}
+</p>
+
+<h3>By user</h3>
+
+<p> {{ currentUser.username }} with id {{ currentUser.id }}</p>
+
+
