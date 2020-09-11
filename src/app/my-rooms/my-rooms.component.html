@@ -1,0 +1,17 @@
+<header class="jumbotron">
+  <h3>
+    <strong>My rooms</strong>
+  </h3>
+</header>
+
+<table class="table table-sm">
+  <tbody>
+    <tr *ngFor="let room of fullCurrentUser.rooms">
+      <td>
+        <a routerLink="/room/{{room.id}}">
+          <p class="text-center">{{ room.title }} (id {{ room.id }})</p>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
