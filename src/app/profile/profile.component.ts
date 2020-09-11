@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../services/token-storage.service';
 import { UserService } from '../services/user.service';
 import { Validate } from '../helpers/validate';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -16,12 +17,13 @@ export class ProfileComponent implements OnInit {
   invalidInput: boolean;
 
   constructor(private token: TokenStorageService,
-              private userService: UserService) { }
+              private userService: UserService,
+              private readonly router: Router) { }
 
   ngOnInit() {
     this.currentUser = this.token.getUser();
-    if (this.currentUser == null) {
-      return;
+    if (!this.currentUser) {
+      this.router.navigate(['/', 'login']);
     }
 
     this.invalidInput = false;

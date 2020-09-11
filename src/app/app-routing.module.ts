@@ -9,6 +9,7 @@ import { RoomDetailsComponent } from './room-details/room-details.component';
 import { AddARoomComponent } from './add-a-room/add-a-room.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
+import {MyRoomsComponent} from './my-rooms/my-rooms.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'add-a-room', component: AddARoomComponent },
   { path: 'reservation', component: ReservationComponent },
   { path: 'user-reservations', component: UserReservationsComponent },
+  { path: 'my-rooms', component: MyRoomsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

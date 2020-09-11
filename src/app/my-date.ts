@@ -48,14 +48,14 @@ export class MyDate {
   }
 
   isBefore(d: MyDate): boolean {
-    if (this.year < d.year) {
-      return true;
+    if (this.year !== d.year) {
+      return this.year < d.year;
     }
-    else if (this.year === d.year && this.month < d.month) {
-      return true;
+    else if (this.month !== d.month) {
+      return this.month < d.month;
     }
-    else if (this.year === d.year && this.month === d.month && this.day < d.day) {
-      return true;
+    else if (this.day !== d.day) {
+      return this.day < d.day;
     }
     else {
       return false;

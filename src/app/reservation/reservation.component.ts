@@ -38,8 +38,11 @@ export class ReservationComponent implements OnInit {
     // If user is not logged in, or somehow no room has been selected,
     // redirect to /home
     this.currentUser = this.token.getUser();
-    if (!this.currentUser ||
-        !this.reservationService.room.id) {
+    if (!this.currentUser) {
+      this.router.navigate(['/', 'login']);
+    }
+
+    if (!this.reservationService.room.id) {
       this.router.navigate(['/', 'home']);
     }
 
@@ -61,7 +64,6 @@ export class ReservationComponent implements OnInit {
   makeReservation(): void {
 
     // Check validity of dates
-    // TODO: check dateFrom < dateTo
     if (!this.dateFrom.isValid() ||
         !this.dateTo.isValid() ||
         !this.dateFrom.isBefore(this.dateTo)) {
@@ -87,7 +89,8 @@ export class ReservationComponent implements OnInit {
         data => {
             console.log('YOU JUST MADE IT');
             console.log(JSON.stringify(data));
-            this.router.navigate(['/', 'user-reservations']);
+            const justBooked = true;
+            this.router.navigate(['/', 'user-reservations', justBooked]);
         }
     );
   }

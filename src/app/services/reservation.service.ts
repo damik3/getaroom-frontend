@@ -5,7 +5,7 @@ import { MyDate } from '../my-date';
 import { Room } from '../room';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:8080/api/reservations';
+const API_URL = 'http://localhost:8080/api/reservations/';
 
 @Injectable({
   providedIn: 'root'
@@ -22,18 +22,14 @@ export class ReservationService {
     this.dateFrom = new MyDate();
     this.dateTo = new MyDate();
     this.room = new Room();
-    console.log('CONSTRUCTOR OF RESERVATIONSERVICE BITS');
-  }
-
-  set(s: string): void {
-    this.s = s;
-  }
-
-  get(): string {
-    return this.s;
+    console.log('CONSTRUCTOR OF RESERVATION SERVICE BITS');
   }
 
   make(r: Reservation): Observable<any> {
-      return this.http.post(API_URL, r, { responseType: 'json' });
+    return this.http.post(API_URL, r, { responseType: 'json' });
+  }
+
+  getUserReservations(id: number): Observable<any> {
+    return this.http.get(API_URL + 'user/' + id.toString(), { responseType: 'json' });
   }
 }

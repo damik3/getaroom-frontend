@@ -4,65 +4,62 @@
   </h3>
 </header>
 
-<div class="container">
-
-  <!-- Country -->
-  <div class="input-group mb-3">
-    <input id="country" class="form-control mb-4" placeholder="Country (required)" [(ngModel)]="query.country">
+<form>
+  <div class="form-group">
+    <label for="Country">Country (required)</label>
+    <input id="Country" class="form-control" [(ngModel)]="query.country" [ngModelOptions]="{standalone: true}">
   </div>
 
-  <!-- City -->
-  <div class="input-group mb-3">
-    <input id="City" class="form-control mb-4" placeholder="City" [(ngModel)]="query.city">
+  <div class="form-group">
+    <label for="City">City</label>
+    <input id="City" class="form-control" [(ngModel)]="query.city" [ngModelOptions]="{standalone: true}">
   </div>
 
-  <!-- Area -->
-  <div class="input-group mb-3">
-    <input id="Area" class="form-control mb-4" placeholder="Area" [(ngModel)]="query.area">
+  <div class="form-group">
+    <label for="Area">Area</label>
+    <input id="Area" class="form-control" [(ngModel)]="query.area" [ngModelOptions]="{standalone: true}">
   </div>
 
-  <!-- Number of Persons -->
-  <div class="input-group mb-3">
-    <input id="NumPersons" class="form-control mb-4" placeholder="Number of persons (required)" [(ngModel)]="query.numBeds">
+  <div class="form-group">
+    <label for="NumPersons">Number of persons (required)</label>
+    <input id="NumPersons" class="form-control" [(ngModel)]="query.numBeds" [ngModelOptions]="{standalone: true}">
   </div>
 
-  <!-- Date From -->
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="DateFrom">From (YYYY-MM-DD) (required)</label>
+  <div class="form-group">
+    <label for="NumPersons">Date from YYYY-MM-DD (required)</label>
+      <div class="input-group mb-3">
+        <select class="custom-select" id="DateFrom" [(ngModel)]="dateFrom.year" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let y of years">{{ y }}</option>
+        </select>
+        <select class="custom-select" [(ngModel)]="dateFrom.month" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let m of months">{{ m }}</option>
+        </select>
+        <select class="custom-select" [(ngModel)]="dateFrom.day" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let d of days">{{ d }}</option>
+        </select>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="NumPersons">Date To YYYY-MM-DD (required)</label>
+    <div class="input-group mb-3">
+      <select class="custom-select" id="DateFrom" [(ngModel)]="dateTo.year" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let y of years">{{ y }}</option>
+      </select>
+      <select class="custom-select" [(ngModel)]="dateTo.month" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let m of months">{{ m }}</option>
+      </select>
+      <select class="custom-select" [(ngModel)]="dateTo.day" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let d of days">{{ d }}</option>
+      </select>
     </div>
-    <select class="custom-select" id="DateFrom" [(ngModel)]="dateFrom.year">
-      <option *ngFor="let y of years">{{ y }}</option>
-    </select>
-    <select class="custom-select" [(ngModel)]="dateFrom.month">
-      <option *ngFor="let m of months">{{ m }}</option>
-    </select>
-    <select class="custom-select" [(ngModel)]="dateFrom.day">
-      <option *ngFor="let d of days">{{ d }}</option>
-    </select>
-  </div>
-
-  <!-- Date To -->
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="DateTo">To &nbsp; &nbsp; &nbsp;(YYYY-MM-DD) (required)</label>
-    </div>
-    <select class="custom-select" id="DateTo" [(ngModel)]="dateTo.year">
-      <option *ngFor="let y of years">{{ y }}</option>
-    </select>
-    <select class="custom-select" data-flip="false" [(ngModel)]="dateTo.month">
-      <option *ngFor="let m of months">{{ m }}</option>
-    </select>
-    <select class="custom-select" [(ngModel)]="dateTo.day">
-      <option *ngFor="let d of days">{{ d }}</option>
-    </select>
   </div>
 
   <div class="alert alert-danger" role="alert" *ngIf="invalidInput">
-    Please, fill out all required fields!
+    Please, fill out all required fields appropriately!
   </div>
 
-    <!-- Do search button -->
+  <!-- Do search button -->
   <button class="btn btn-block btn-primary" type="submit" (click)="search()">Search</button>
 
-</div>
+</form>

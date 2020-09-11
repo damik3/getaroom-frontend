@@ -3,7 +3,6 @@ import { RoomService } from '../services/room.service';
 import { PageEvent } from '@angular/material/paginator';
 import {ActivatedRoute} from '@angular/router';
 import {SearchQuery} from '../search-query';
-import {ReservationService} from '../services/reservation.service';
 
 @Component({
   selector: 'app-room',
@@ -29,20 +28,11 @@ export class RoomComponent implements OnInit {
 
 
   constructor(private roomService: RoomService,
-              private readonly activatedRoute: ActivatedRoute,
-              private reservationService: ReservationService) { }
+              private readonly activatedRoute: ActivatedRoute) { }
 
 
 
   ngOnInit(): void {
-
-    console.log('MESSAJ EST ' + this.reservationService.get());
-    if (this.reservationService.dateFrom.isValid()) {
-      console.log('dateFrom = ' + this.reservationService.dateFrom.toString());
-    }
-    if (this.reservationService.dateTo.isValid()) {
-      console.log('dateTo = ' + this.reservationService.dateTo.toString());
-    }
 
     this.pageEvent = new PageEvent();
     this.numbers = Array(this.pageSize).fill(1).map((x, i) => i); // [0,1,2,3,4]
@@ -59,19 +49,16 @@ export class RoomComponent implements OnInit {
       this.query.numBeds = +query.numBeds;
       this.query.dateFrom = query.dateFrom;
       this.query.dateTo = query.dateTo;
-      console.log('Just received ' + JSON.stringify(this.query));
 
       if (!this.query.country ||
         !this.query.numBeds ||
         !this.query.dateFrom ||
         !this.query.dateTo) {
-        console.log('NULLLLLLLLLL');
         this.showAll = true;
       }
 
       // Show all rooms
       if (this.showAll) {
-        console.log('got into showAll');
         this.roomService.getAll().subscribe(
           data => {
             this.rooms = data;
@@ -86,7 +73,6 @@ export class RoomComponent implements OnInit {
 
       // Show search results
       else {
-        console.log('DID NOT got into showAll');
         this.roomService.search(this.query).subscribe(
           data => {
             this.rooms = data;

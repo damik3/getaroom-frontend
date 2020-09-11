@@ -3,28 +3,34 @@
     <a href="#" class="navbar-brand">getaroom</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
+        <a class="nav-link" routerLink="home">Home </a>
       </li>
       <li class="nav-item">
-        <a href="/rooms" class="nav-link" routerLink="rooms">Rooms </a>
+        <a class="nav-link" routerLink="rooms">Rooms </a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
       <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+        <a class="nav-link" routerLink="register">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <a class="nav-link" routerLink="login">Login</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile" class="nav-link">{{ username }}</a>
-      </li>
-      <li class="nav-item" *ngIf="showAddRoomOption">
+      <li class="nav-item" *ngIf="isHost">
         <a routerLink="/add-a-room" class="nav-link">Add a room</a>
+      </li>
+      <li class="nav-item" *ngIf="isHost">
+        <a routerLink="/my-rooms" class="nav-link">My rooms</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/user-reservations" class="nav-link">My reservations</a>
+      </li>
+      <li class="nav-item">
+        <a href="/profile" class="nav-link">My profile</a>
       </li>
       <li class="nav-item">
         <a href class="nav-link" (click)="logout()">LogOut</a>

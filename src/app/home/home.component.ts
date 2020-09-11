@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   days = MyDate.days;
   months = MyDate.months;
   years = MyDate.years;
+
   query: SearchQuery;
   dateFrom: MyDate;
   dateTo: MyDate;
@@ -29,14 +30,11 @@ export class HomeComponent implements OnInit {
     this.dateTo.set(2020, 1, 1);
   }
 
-  ngOnInit(): void {
-      this.dateFrom.set(2020, 3, 200);
-      if (this.dateFrom.isValid()) {
-        console.log('dateFrom = ' + this.dateFrom.toString());
-      }
-  }
+  ngOnInit(): void {}
 
   search(): void {
+
+    console.log('query = ' + JSON.stringify(this.query) + ' ' + this.dateFrom.toString() + ' ' + this.dateTo.toString());
 
     // Check validity before submitting
     if (!Validate.text(this.query.country) ||
@@ -51,17 +49,16 @@ export class HomeComponent implements OnInit {
 
     this.invalidInput = false;
 
+    // Set reservationService dates for them to appear at the reservation phase
+    this.reservationService.dateFrom.set2(this.dateFrom);
+    this.reservationService.dateTo.set2(this.dateTo);
+
     // Make dates into string
     this.query.dateFrom = this.dateFrom.toString();
     this.query.dateTo = this.dateTo.toString();
 
     // ...???
     const queryParams = this.query;
-
-    this.reservationService.set('HOLA');
-    console.log('HOLA IS SET');
-    this.reservationService.dateFrom.set2(this.dateFrom);
-    this.reservationService.dateTo.set2(this.dateTo);
 
     // Send data to ResultsComponent
     this.router.navigate(['/', 'rooms'], {
