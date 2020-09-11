@@ -1,1 +1,26 @@
-<p>user-reservations works!</p>
+<header class="jumbotron">
+  <h3>
+    <strong>My reservations</strong>
+  </h3>
+</header>
+
+<div class="alert alert-success" role="alert" *ngIf="justBooked === 'true'">
+  You just made a reservation!
+</div>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Room</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reservation of reservations">
+      <td><a routerLink="/room/{{ reservation.room.id }}">{{ reservation.room.title }} </a></td>
+      <td>{{ reservation.dateFrom }}</td>
+      <td>{{ reservation.dateTo }}</td>
+    </tr>
+  </tbody>
+</table>
