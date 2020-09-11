@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {Room} from '../room';
-import {SearchQuery} from '../search-query';
+import { Room } from '../room';
+import { SearchQuery } from '../search-query';
 
 const API_URL = 'http://localhost:8080/api/rooms/';
 const SEARCH_API_URL = 'http://localhost:8080/api/search/';

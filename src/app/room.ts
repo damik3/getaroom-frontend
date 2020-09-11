@@ -18,6 +18,8 @@ export class Room {
 
   set(r: Room): void {
     this.id = r.id;
+    this.owner.id = r.owner.id;
+    this.owner.username = r.owner.username;
     this.title = r.title;
     this.country = r.country;
     this.city = r.city;

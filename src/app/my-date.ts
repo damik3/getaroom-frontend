@@ -1,6 +1,14 @@
 const currYear = 2020;
 
 export class MyDate {
+
+  // Sad I know...
+  static years = [2020, 2021];
+  static months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  static days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+
   day: number;
   month: number;
   year: number;
@@ -37,5 +45,20 @@ export class MyDate {
     s += '-';
     s += (this.day < 10) ? '0' + this.day.toString() : this.day.toString();
     return s;
+  }
+
+  isBefore(d: MyDate): boolean {
+    if (this.year < d.year) {
+      return true;
+    }
+    else if (this.year === d.year && this.month < d.month) {
+      return true;
+    }
+    else if (this.year === d.year && this.month === d.month && this.day < d.day) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 }

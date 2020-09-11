@@ -12,13 +12,9 @@ import { ReservationService } from '../services/reservation.service';
 })
 export class HomeComponent implements OnInit {
 
-  // Sad I know...
-  years = [2020, 2021];
-  months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-    11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-
+  days = MyDate.days;
+  months = MyDate.months;
+  years = MyDate.years;
   query: SearchQuery;
   dateFrom: MyDate;
   dateTo: MyDate;
@@ -46,7 +42,8 @@ export class HomeComponent implements OnInit {
     if (!Validate.text(this.query.country) ||
         !this.query.numBeds ||
         !this.dateFrom.isValid() ||
-        !this.dateTo.isValid()) {
+        !this.dateTo.isValid() ||
+        !this.dateFrom.isBefore(this.dateTo)) {
       console.log('INPUT ERROR');
       this.invalidInput = true;
       return;

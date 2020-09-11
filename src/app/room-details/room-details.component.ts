@@ -23,15 +23,12 @@ export class RoomDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    if (!this.currentUser) {
-      return;
-    }
 
     const id = +this.route.snapshot.paramMap.get('id');
     this.roomService.get(String(id)).subscribe(
       data => {
         this.room = data;
-        console.log('room = ' + this.room);
+        console.log('room = ' + JSON.stringify(this.room));
       }
     );
   }

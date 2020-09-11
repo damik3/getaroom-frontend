@@ -18,6 +18,7 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { RoomDetailsComponent } from './room-details/room-details.component';
 import { AddARoomComponent } from './add-a-room/add-a-room.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ReservationComponent } from './reservation/reservation.component';
     ProfileComponent,
     RoomDetailsComponent,
     AddARoomComponent,
-    ReservationComponent
+    ReservationComponent,
+    UserReservationsComponent
   ],
   imports: [
     BrowserModule,

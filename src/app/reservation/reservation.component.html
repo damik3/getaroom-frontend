@@ -4,25 +4,66 @@
   </h3>
 </header>
 
-<h3>Gonna make a reservation for room</h3>
+<div class="container">
 
-<p>
-  <label><strong>Title: </strong></label><br>
-  {{ room.title }}
-</p>
+  <h3>Gonna make a reservation for room</h3>
 
-<p>
-  <label><strong>Location: </strong></label><br>
-  {{ room.country }}, {{ room.city }}, {{ room.area }}, {{ room.address }}
-</p>
+  <p>
+    <label><strong>Title: </strong></label><br>
+    {{ room.title }}
+  </p>
 
-<p>
-  <label><strong>Number of beds: </strong></label><br>
-  {{ room.numBeds }}
-</p>
+  <p>
+    <label><strong>Location: </strong></label><br>
+    {{ room.country }}, {{ room.city }}, {{ room.area }}, {{ room.address }}
+  </p>
 
-<h3>By user</h3>
+  <p>
+    <label><strong>Number of beds: </strong></label><br>
+    {{ room.numBeds }}
+  </p>
 
-<p> {{ currentUser.username }} with id {{ currentUser.id }}</p>
+  <h3>By user</h3>
+
+  <p> {{ currentUser.username }} with id {{ currentUser.id }}</p>
 
 
+  <!-- Date From -->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="DateFrom">From (YYYY-MM-DD) (required)</label>
+    </div>
+    <select class="custom-select" id="DateFrom" [(ngModel)]="dateFrom.year">
+      <option *ngFor="let y of years">{{ y }}</option>
+    </select>
+    <select class="custom-select" [(ngModel)]="dateFrom.month">
+      <option *ngFor="let m of months">{{ m }}</option>
+    </select>
+    <select class="custom-select" [(ngModel)]="dateFrom.day">
+      <option *ngFor="let d of days">{{ d }}</option>
+    </select>
+  </div>
+
+  <!-- Date To -->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="DateTo">To &nbsp; &nbsp; &nbsp;(YYYY-MM-DD) (required)</label>
+    </div>
+    <select class="custom-select" id="DateTo" [(ngModel)]="dateTo.year">
+      <option *ngFor="let y of years">{{ y }}</option>
+    </select>
+    <select class="custom-select" data-flip="false" [(ngModel)]="dateTo.month">
+      <option *ngFor="let m of months">{{ m }}</option>
+    </select>
+    <select class="custom-select" [(ngModel)]="dateTo.day">
+      <option *ngFor="let d of days">{{ d }}</option>
+    </select>
+  </div>
+
+  <div class="alert alert-danger" role="alert" *ngIf="invalidInput">
+    Please, enter valid dates!
+  </div>
+
+  <button class="btn btn-block btn-primary" type="submit" (click)="makeReservation()">Make reservation!</button>
+
+</div>
