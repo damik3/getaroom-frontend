@@ -77,22 +77,21 @@ export class ReservationComponent implements OnInit {
     r.user.id = this.currentUser.id;
     r.room.id = this.room.id;
     r.room.owner = null;
-
-    // TODO: set price = (dateTo - dateFrom) * pricePerDay
-    r.price = 0;
+    r.price = MyDate.diff(this.dateFrom, this.dateTo) * this.room.pricePerDay;
     r.dateFrom = this.dateFrom.toString();
     r.dateTo = this.dateTo.toString();
-
-    console.log('GONNA MAKE RESERVE ' + JSON.stringify(r));
 
     this.reservationService.make(r).subscribe(
         data => {
             console.log('YOU JUST MADE IT');
             console.log(JSON.stringify(data));
-            const justBooked = true;
-            this.router.navigate(['/', 'user-reservations', justBooked]);
+            this.router.navigate(['/user-reservations'], { queryParams: { justBooked: 'true' } });
         }
     );
   }
 
+
+  getDateDiff(d1: MyDate, d2: MyDate): number {
+    return MyDate.diff(d1, d2);
+  }
 }

@@ -21,6 +21,16 @@
     {{ room.numBeds }}
   </p>
 
+  <p>
+    <label><strong>Price per day </strong></label><br>
+    {{ room.pricePerDay }}
+  </p>
+
+  <p>
+    <label><strong>Total price: </strong></label><br>
+    {{ getDateDiff(dateFrom, dateTo) * room.pricePerDay}}
+  </p>
+
   <!-- Date From -->
   <div class="input-group mb-3">
     <div class="input-group-prepend">

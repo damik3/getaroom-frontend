@@ -28,7 +28,6 @@ export class RoomDetailsComponent implements OnInit {
     this.roomService.get(String(id)).subscribe(
       data => {
         this.room = data;
-        console.log('room = ' + JSON.stringify(this.room));
       }
     );
   }
@@ -36,7 +35,6 @@ export class RoomDetailsComponent implements OnInit {
 
 
   book(): void {
-    console.log('gonna book some ass');
     this.reservationService.room.set(this.room);
     this.router.navigate(['/', 'reservation']);
   }

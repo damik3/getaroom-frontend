@@ -9,7 +9,7 @@ import { RoomDetailsComponent } from './room-details/room-details.component';
 import { AddARoomComponent } from './add-a-room/add-a-room.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
-import {MyRoomsComponent} from './my-rooms/my-rooms.component';
+import { MyRoomsComponent } from './my-rooms/my-rooms.component';
 
 
 

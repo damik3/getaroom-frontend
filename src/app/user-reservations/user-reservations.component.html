@@ -14,6 +14,7 @@
       <th scope="col">Room</th>
       <th scope="col">From</th>
       <th scope="col">To</th>
+      <th scope="col">Total price</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,7 @@
       <td><a routerLink="/room/{{ reservation.room.id }}">{{ reservation.room.title }} </a></td>
       <td>{{ reservation.dateFrom }}</td>
       <td>{{ reservation.dateTo }}</td>
+      <td>{{ reservation.price }}</td>
     </tr>
   </tbody>
 </table>
