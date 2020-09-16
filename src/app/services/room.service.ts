@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { Room } from '../room';
 import { SearchQuery } from '../search-query';
 
-const API_URL = 'http://localhost:8080/api/rooms/';
-const SEARCH_API_URL = 'http://localhost:8080/api/search/';
+const API_URL = 'https://localhost:8443/api/rooms/';
+const SEARCH_API_URL = 'https://localhost:8443/api/search/';
 
 @Injectable({
   providedIn: 'root'

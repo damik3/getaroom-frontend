@@ -6,6 +6,8 @@
 
 <div class="col-md-12">
   <div>
+
+    <!-- Form -->
     <form
       *ngIf="!isSuccessful"
       name="form"
@@ -13,9 +15,12 @@
       #f="ngForm"
       novalidate
     >
+
+      <!-- Username -->
       <div class="form-group">
         <label for="username">Username</label>
         <input
+          id="username"
           type="text"
           class="form-control"
           name="username"
@@ -35,9 +40,12 @@
           </div>
         </div>
       </div>
+
+      <!-- Email -->
       <div class="form-group">
         <label for="email">Email</label>
         <input
+          id="email"
           type="email"
           class="form-control"
           name="email"
@@ -53,9 +61,12 @@
           </div>
         </div>
       </div>
+
+      <!-- Password -->
       <div class="form-group">
         <label for="password">Password</label>
         <input
+          id="password"
           type="password"
           class="form-control"
           name="password"
@@ -71,15 +82,85 @@
           </div>
         </div>
       </div>
+
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          #name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+          <div *ngIf="name.errors.required">Name is required</div>
+        </div>
+      </div>
+
+      <!-- Name -->
+      <div class="form-group">
+        <label for="surname">Surname</label>
+        <input
+          id="surname"
+          type="text"
+          class="form-control"
+          name="surname"
+          [(ngModel)]="form.surname"
+          required
+          #surname="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && surname.invalid">
+          <div *ngIf="surname.errors.required">Surname is required</div>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+          id="phone"
+          type="text"
+          class="form-control"
+          name="phone"
+          [(ngModel)]="form.phone"
+          required
+          #phone="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && phone.invalid">
+          <div *ngIf="phone.errors.required">Phone is required</div>
+        </div>
+      </div>
+
+      <!-- Wants host -->
+      <div class="form-check">
+        <input
+          id="host"
+          type="checkbox"
+          class="form-check-input"
+          name="host"
+          [(ngModel)]="wantsHost"
+          #host="ngModel"
+        />
+        <label class="form-check-label" for="host">I want to get a host role</label>
+      </div>
+
+      <br>
+
+      <!-- Submit -->
       <div class="form-group">
         <button class="btn btn-primary btn-block">Sign Up</button>
       </div>
 
+      <!-- Failure -->
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
         Signup failed!<br />{{ errorMessage }}
       </div>
     </form>
 
+    <!-- Success -->
     <div class="alert alert-success" *ngIf="isSuccessful">
       Your registration is successful!
     </div>

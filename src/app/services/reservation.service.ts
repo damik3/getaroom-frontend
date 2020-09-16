@@ -5,7 +5,7 @@ import { MyDate } from '../my-date';
 import { Room } from '../room';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:8080/api/reservations/';
+const API_URL = 'https://localhost:8443/api/reservations/';
 
 @Injectable({
   providedIn: 'root'

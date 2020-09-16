@@ -35,10 +35,6 @@ export class HomeComponent implements OnInit {
 
   search(): void {
 
-    console.log(this.dateTo.toString() + ' - ' + this.dateFrom.toString() + ' = ' + MyDate.diff(this.dateFrom, this.dateTo));
-    console.log(this.dateFrom + ' < ' + this.dateTo + ' ? ' + this.dateFrom.isBefore(this.dateTo));
-    return;
-
     console.log('query = ' + JSON.stringify(this.query) + ' ' + this.dateFrom.toString() + ' ' + this.dateTo.toString());
 
     // Check validity before submitting
