@@ -4,22 +4,30 @@
       <strong>{{ currentUser.username }}</strong> Profile
     </h3>
   </header>
-  <p>
-    <label><strong>Name: </strong></label><br>
-     <input class="form-control" [(ngModel)]="fullCurrentUser.name"/>
-  </p>
-  <p>
-    <label><strong>Surname: </strong></label><br>
-    <input class="form-control" [(ngModel)]="fullCurrentUser.surname"/>
-  </p>
-  <p>
-    <label><strong>Email: </strong></label><br>
-    <input class="form-control" [(ngModel)]="fullCurrentUser.email"/>
-  </p>
-  <p>
-    <label><strong>Phone: </strong></label><br>
-    <input class="form-control" [(ngModel)]="fullCurrentUser.phone"/>
-  </p>
+
+  <!-- Name -->
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" class="form-control" [(ngModel)]="fullCurrentUser.name"/>
+  </div>
+
+  <!-- Surname -->
+  <div class="form-group">
+    <label for="surname">Name</label>
+    <input id="surname" class="form-control" [(ngModel)]="fullCurrentUser.surname"/>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <label for="email">Name</label>
+    <input id="email" class="form-control" [(ngModel)]="fullCurrentUser.email"/>
+  </div>
+
+  <!-- Phone -->
+  <div class="form-group">
+    <label for="phone">Name</label>
+    <input id="phone" class="form-control" [(ngModel)]="fullCurrentUser.phone"/>
+  </div>
 
   <br>
   <div class="alert alert-danger" *ngIf="invalidInput">
@@ -28,7 +36,10 @@
   <div class="alert alert-success" role="alert" *ngIf="success">
     Success!
   </div>
+
   <button type="button" class="btn btn-block btn-primary" (click)="save()">Save</button>
+
+  <br>
 
 </div>
 
