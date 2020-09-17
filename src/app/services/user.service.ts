@@ -11,6 +11,10 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
+  getAll(): Observable<any> {
+    return this.http.get(API_URL, { responseType: 'json' });
+  }
+
   getUser(id: string): Observable<any> {
     return this.http.get(API_URL + id, { responseType: 'json' });
   }
@@ -18,4 +22,9 @@ export class UserService {
   updateUser(user): Observable<any> {
       return this.http.put(API_URL + user.id, user, { responseType: 'json' });
   }
+
+  deleteUser(userId): Observable<any> {
+    return this.http.delete(API_URL + userId, { responseType: 'json' });
+  }
+
 }

@@ -31,4 +31,15 @@ export class TokenStorageService {
   public getUser() {
     return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
+
+  public isAdmin(): boolean {
+    const user = this.getUser();
+    if (user) {
+      return user.roles.includes('ROLE_ADMIN');
+    }
+    else {
+      return false;
+    }
+
+  }
 }

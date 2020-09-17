@@ -1,0 +1,22 @@
+<header class="jumbotron">
+  <h3>
+    <strong>Users</strong>
+  </h3>
+</header>
+
+<div class="alert alert-warning" role="alert"*ngIf="userDeleted">
+  User successfully deleted! Refresh to see updated user list!
+</div>
+
+<div class="alert alert-warning" role="alert"*ngIf="err">
+  Something unexpected happened!
+</div>
+
+<table class="table table-sm">
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>  <button type="button" class="btn btn-danger" (click)="delete(user.id)">Delete</button> </td>
+    <td >  {{ user.id }}, with username {{ user.username }} </td>
+  </tr>
+  </tbody>
+</table>
