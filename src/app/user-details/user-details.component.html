@@ -1,0 +1,52 @@
+<header class="jumbotron">
+  <h3>
+    <strong>{{ user.username }}</strong> Profile
+  </h3>
+</header>
+
+<div *ngIf="!errorMessage; else failure">
+
+  <p>
+    <strong>User id:</strong><br>
+    {{ user.id }}
+  </p>
+
+  <p>
+    <strong>Name:</strong><br>
+    {{ user.name }}
+  </p>
+
+  <p>
+    <strong>Surname:</strong><br>
+    {{ user.surname }}
+  </p>
+
+  <p>
+    <strong>Email:</strong><br>
+    {{ user.email }}
+  </p>
+
+  <p>
+    <strong>Phone:</strong><br>
+    {{ user.phone }}
+  </p>
+
+  <p *ngIf="user.hostReqPending">
+    <strong>Approve host request:</strong><br>
+    <button type="button" class="btn btn-sm btn-success" (click)="approveHostReq(user.id)">Approve</button>
+  </p>
+
+  <p>
+    <strong>Delete user:</strong><br>
+      <button type="button" class="btn btn-sm btn-danger" (click)="delete(user.id)">Delete</button>
+  </p><br>
+
+
+</div>
+
+<!-- Failure -->
+<ng-template #failure>
+  <div class="alert alert-warning" *ngIf="errorMessage">
+    Something didn't go well...<br/>{{ errorMessage }}
+  </div>
+</ng-template>

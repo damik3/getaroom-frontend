@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../services/user.service';
 import {TokenStorageService} from '../services/token-storage.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +16,8 @@ export class UsersComponent implements OnInit {
 
   constructor(private userService: UserService,
               private token: TokenStorageService,
-              private readonly router: Router) { }
+              private readonly router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -29,6 +30,10 @@ export class UsersComponent implements OnInit {
         this.users = data;
       }
     );
+
+    this.route.queryParams.subscribe(params => {
+      this.userDeleted = params.justDeleted;
+    });
   }
 
   public delete(userId): void {

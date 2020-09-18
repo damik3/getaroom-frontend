@@ -5,7 +5,7 @@
 </header>
 
 <div class="alert alert-warning" role="alert"*ngIf="userDeleted">
-  User successfully deleted! Refresh to see updated user list!
+  User successfully deleted!
 </div>
 
 <div class="alert alert-warning" role="alert"*ngIf="err">
@@ -15,8 +15,7 @@
 <table class="table table-sm">
   <tbody>
   <tr *ngFor="let user of users">
-    <td>  <button type="button" class="btn btn-danger" (click)="delete(user.id)">Delete</button> </td>
-    <td >  {{ user.id }}, with username {{ user.username }} </td>
+    <td class="text-center"><a routerLink="/profile/{{user.id}}"> {{ user.username }} </a></td>
   </tr>
   </tbody>
 </table>

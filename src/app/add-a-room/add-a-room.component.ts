@@ -22,6 +22,10 @@ export class AddARoomComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
+    if (this.currentUser == null) {
+      return;
+    }
+
     this.room = new Room();
     this.room.owner.id = this.currentUser.id;
     this.success = false;

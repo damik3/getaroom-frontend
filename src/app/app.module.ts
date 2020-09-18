@@ -21,6 +21,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 import { MyRoomsComponent } from './my-rooms/my-rooms.component';
 import { UsersComponent } from './users/users.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UsersComponent } from './users/users.component';
     ReservationComponent,
     UserReservationsComponent,
     MyRoomsComponent,
-    UsersComponent
+    UsersComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

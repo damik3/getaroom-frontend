@@ -122,15 +122,17 @@
         <label for="phone">Phone</label>
         <input
           id="phone"
-          type="text"
           class="form-control"
           name="phone"
           [(ngModel)]="form.phone"
+          type="tel"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           required
           #phone="ngModel"
         />
         <div class="alert-danger" *ngIf="f.submitted && phone.invalid">
           <div *ngIf="phone.errors.required">Phone is required</div>
+          <div *ngIf="phone.errors.pattern">Please eneter a valid phone number</div>
         </div>
       </div>
 

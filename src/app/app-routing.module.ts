@@ -11,6 +11,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 import { MyRoomsComponent } from './my-rooms/my-rooms.component';
 import {UsersComponent} from './users/users.component';
+import {UserDetailsComponent} from './user-details/user-details.component';
 
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'user-reservations', component: UserReservationsComponent },
   { path: 'my-rooms', component: MyRoomsComponent },
   { path: 'users', component: UsersComponent },
+  { path: 'profile/:id', component: UserDetailsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
