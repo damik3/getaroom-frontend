@@ -12,6 +12,7 @@ import { UserReservationsComponent } from './user-reservations/user-reservations
 import { MyRoomsComponent } from './my-rooms/my-rooms.component';
 import {UsersComponent} from './users/users.component';
 import {UserDetailsComponent} from './user-details/user-details.component';
+import {HostRequestsComponent} from './host-requests/host-requests.component';
 
 
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'my-rooms', component: MyRoomsComponent },
   { path: 'users', component: UsersComponent },
   { path: 'profile/:id', component: UserDetailsComponent },
+  { path: 'host-requests', component: HostRequestsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

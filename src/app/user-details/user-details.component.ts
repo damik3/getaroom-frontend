@@ -12,6 +12,7 @@ export class UserDetailsComponent implements OnInit {
 
   user: any;
   errorMessage = '';
+  approved = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -39,20 +40,25 @@ export class UserDetailsComponent implements OnInit {
   }
 
   public delete(userId): void {
-    console.log('BOOM');
-
     this.userService.deleteUser(userId).subscribe(
-      data => {
+      () => {
         this.router.navigate(['/users'], { queryParams: { justDeleted: 'true' } });
       },
-      err => {
+      () => {
         this.errorMessage = 'Error: Something unexpected happened!';
       }
     );
   }
 
   public approveHostReq(userId): void {
-    console.log('gonna approve that sit');
+    this.userService.approveHostReq(userId).subscribe(
+      () => {
+        this.approved = true;
+      },
+      () => {
+        this.errorMessage = 'Error: Something unexpected happened!';
+      }
+    );
   }
 
 }

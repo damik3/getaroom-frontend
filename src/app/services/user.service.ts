@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 const API_URL = 'https://localhost:8443/api/users/';
+const HOST_REQ_API_URL = 'https://localhost:8443/api/host-request/';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,14 @@ export class UserService {
 
   deleteUser(userId): Observable<any> {
     return this.http.delete(API_URL + userId, { responseType: 'json' });
+  }
+
+  getAllHostReq(): Observable<any> {
+    return this.http.get(HOST_REQ_API_URL, { responseType: 'json' });
+  }
+
+  approveHostReq(userId): Observable<any> {
+    return this.http.post(HOST_REQ_API_URL + userId, { responseType: 'json' });
   }
 
 }

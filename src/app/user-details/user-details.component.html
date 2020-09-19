@@ -1,10 +1,10 @@
-<header class="jumbotron">
+<header class="jumbotron" *ngIf="user">
   <h3>
     <strong>{{ user.username }}</strong> Profile
   </h3>
 </header>
 
-<div *ngIf="!errorMessage; else failure">
+<div *ngIf="user">
 
   <p>
     <strong>User id:</strong><br>
@@ -36,17 +36,18 @@
     <button type="button" class="btn btn-sm btn-success" (click)="approveHostReq(user.id)">Approve</button>
   </p>
 
+  <div class="alert alert-success" role="alert" *ngIf="approved">
+    Request approved!
+  </div>
+
   <p>
     <strong>Delete user:</strong><br>
       <button type="button" class="btn btn-sm btn-danger" (click)="delete(user.id)">Delete</button>
   </p><br>
 
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
 
 </div>
-
-<!-- Failure -->
-<ng-template #failure>
-  <div class="alert alert-warning" *ngIf="errorMessage">
-    Something didn't go well...<br/>{{ errorMessage }}
-  </div>
-</ng-template>
