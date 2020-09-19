@@ -41,6 +41,13 @@
     {{ room.pricePerDay }}
   </p>
 
+  <p>
+    <label><strong>Owner info</strong></label><br>
+    Name: {{ room.owner.surname }} {{ room.owner.name }}
+    <br>Email: {{ room.owner.email }}
+    <br> Phone: {{ room.owner.phone }}
+  </p>
+
   <button *ngIf="currentUser" type="button" class="btn btn-primary" (click)="book()">Book now!</button>
 
 </div>
