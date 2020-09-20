@@ -1,0 +1,19 @@
+<header class="jumbotron">
+  <h3>
+    <strong>Room photos</strong>
+  </h3>
+</header>
+
+<table>
+  <tbody>
+    <tr *ngFor="let photo of photos">
+      <td>
+        <div class="text-center">
+          <a href="{{photo.url}}">
+            <img style="width:256px; height:256px" src="{{photo.url}}" alt="{{photo.name}}">
+          </a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

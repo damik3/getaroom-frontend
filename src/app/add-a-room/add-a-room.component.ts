@@ -3,6 +3,7 @@ import { TokenStorageService } from '../services/token-storage.service';
 import { Room } from '../room';
 import { RoomService } from '../services/room.service';
 import { Validate } from '../helpers/validate';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-a-room',
@@ -18,7 +19,8 @@ export class AddARoomComponent implements OnInit {
   invalidInput: boolean;
 
   constructor(private token: TokenStorageService,
-              private roomService: RoomService) { }
+              private roomService: RoomService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
@@ -58,6 +60,7 @@ export class AddARoomComponent implements OnInit {
     this.roomService.put(this.room).subscribe(
       () => {
         this.success = true;
+        this.router.navigate(['/my-rooms'], { queryParams: { justAdded: 'true' } });
       }
     );
   }

@@ -13,6 +13,9 @@ import { MyRoomsComponent } from './my-rooms/my-rooms.component';
 import {UsersComponent} from './users/users.component';
 import {UserDetailsComponent} from './user-details/user-details.component';
 import {HostRequestsComponent} from './host-requests/host-requests.component';
+import {AddPhotosComponent} from './add-photos/add-photos.component';
+import {EditRoomInfoComponent} from './edit-room-info/edit-room-info.component';
+import {ViewPhotosComponent} from './view-photos/view-photos.component';
 
 
 
@@ -30,6 +33,9 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'profile/:id', component: UserDetailsComponent },
   { path: 'host-requests', component: HostRequestsComponent },
+  { path: 'room/:id/add-photos', component: AddPhotosComponent },
+  { path: 'room/:id/edit', component: EditRoomInfoComponent },
+  { path: 'room/:id/photos', component: ViewPhotosComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

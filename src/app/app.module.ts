@@ -23,6 +23,9 @@ import { MyRoomsComponent } from './my-rooms/my-rooms.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { HostRequestsComponent } from './host-requests/host-requests.component';
+import { AddPhotosComponent } from './add-photos/add-photos.component';
+import { EditRoomInfoComponent } from './edit-room-info/edit-room-info.component';
+import { ViewPhotosComponent } from './view-photos/view-photos.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { HostRequestsComponent } from './host-requests/host-requests.component';
     MyRoomsComponent,
     UsersComponent,
     UserDetailsComponent,
-    HostRequestsComponent
+    HostRequestsComponent,
+    AddPhotosComponent,
+    EditRoomInfoComponent,
+    ViewPhotosComponent
   ],
   imports: [
     BrowserModule,

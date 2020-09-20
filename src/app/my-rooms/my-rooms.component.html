@@ -4,13 +4,30 @@
   </h3>
 </header>
 
+<div class="alert alert-success" role="alert" *ngIf="justAdded === 'true'">
+  You just added a room!
+</div>
+
 <table class="table table-sm">
   <tbody>
     <tr *ngFor="let room of fullCurrentUser.rooms">
       <td>
         <a routerLink="/room/{{room.id}}">
-          <p class="text-center">{{ room.title }} (id {{ room.id }})</p>
+          <p>{{ room.title }} (id {{ room.id }})</p>
         </a>
+      </td>
+      <td>
+        <a routerLink="/room/{{room.id}}/edit">
+          <button type="button" class="btn btn-sm btn-primary" (click)="justAdded">Edit info</button>
+        </a>
+      </td>
+      <td>
+        <a routerLink="/room/{{room.id}}/add-photos">
+          <button type="button" class="btn btn-sm btn-success" (click)="justAdded">Add photos</button>
+        </a>
+      </td>
+      <td>
+        <button type="button" class="btn btn-sm btn-danger" (click)="justAdded">Delete</button>
       </td>
     </tr>
   </tbody>

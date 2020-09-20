@@ -1,10 +1,10 @@
-<div class="container" *ngIf="currentUser && isHost; else loggedOut">
-  <header class="jumbotron">
-    <h3>
-      <strong>Add a room</strong>
-    </h3>
-  </header>
+<header class="jumbotron">
+  <h3>
+    <strong>Add a room</strong>
+  </h3>
+</header>
 
+<div class="container" *ngIf="currentUser && isHost; else loggedOut">
   <form>
 
     <div class="form-group">
@@ -53,7 +53,7 @@
       Please, fill out all fields!
     </div>
     <div class="alert alert-success" role="alert" *ngIf="success">
-      You just added a room! Now go get one boi!
+      You just added a room!
     </div>
     <button type="submit" class="btn btn-block btn-primary" (click)="save()">Submit</button>
   </form>
