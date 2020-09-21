@@ -49,8 +49,16 @@
       <input required id="pricePerDay" class="form-control" [(ngModel)]="room.pricePerDay" name="pricePerDay">
     </div>
 
+    <div class="form-group">
+      <label for="photo">Add main photo</label><br>
+      <input required id="photo" type="file" (change)="selectFile($event)" />
+    </div>
+
     <div class="alert alert-danger" role="alert" *ngIf="invalidInput">
       Please, fill out all fields!
+    </div>
+    <div class="alert alert-warning" role="alert" *ngIf="message">
+      {{message}}
     </div>
     <div class="alert alert-success" role="alert" *ngIf="success">
       You just added a room!

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Room } from '../room';
 import { SearchQuery } from '../search-query';
+import {main} from '@angular/compiler-cli/src/main';
 
 const API_URL = 'https://localhost:8443/api/rooms/';
 const SEARCH_API_URL = 'https://localhost:8443/api/search/';
@@ -28,5 +29,9 @@ export class RoomService {
 
   search(searchQuery: SearchQuery): Observable<any> {
     return this.http.post(SEARCH_API_URL, searchQuery, { responseType: 'json' });
+  }
+
+  addMainPhoto(roomId: string, mainPhotoUrl: string): Observable<any> {
+    return this.http.post(API_URL + roomId + '/' + 'add-main-photo', {url: mainPhotoUrl}, {responseType: 'json'});
   }
 }

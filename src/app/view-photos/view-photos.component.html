@@ -4,16 +4,37 @@
   </h3>
 </header>
 
+<mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               (page)="pageEvent = $event">
+
+</mat-paginator>
+
+<div  *ngIf="pageEvent">
+  <mat-grid-list cols="3" rowHeight="1:1">
+    <ng-container>
+      <div *ngFor="let i of numbers">
+        <mat-grid-tile *ngIf="getPhoto(getPageIndex()*pageSize + i)">
+          <a href="{{getPhoto(getPageIndex()*pageSize + i).url}}">
+            <img style="width:256px; height:256px" src="{{getPhoto(getPageIndex()*pageSize + i).url}}" alt="{{getPhoto(getPageIndex()*pageSize + i).name}}">
+          </a>
+        </mat-grid-tile>
+      </div>
+    </ng-container>
+  </mat-grid-list>
+</div>
+
+
+<!--
 <table>
   <tbody>
     <tr *ngFor="let photo of photos">
       <td>
-        <div class="text-center">
           <a href="{{photo.url}}">
             <img style="width:256px; height:256px" src="{{photo.url}}" alt="{{photo.name}}">
           </a>
-        </div>
       </td>
     </tr>
   </tbody>
 </table>
+-->

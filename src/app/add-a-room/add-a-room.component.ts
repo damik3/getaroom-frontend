@@ -4,6 +4,8 @@ import { Room } from '../room';
 import { RoomService } from '../services/room.service';
 import { Validate } from '../helpers/validate';
 import {Router} from '@angular/router';
+import {UploadPhotosService} from '../services/upload-photos.service';
+import {HttpEventType, HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-add-a-room',
@@ -17,10 +19,17 @@ export class AddARoomComponent implements OnInit {
   room: Room;
   success: boolean;
   invalidInput: boolean;
+  selectedFiles: FileList;
+  currentFile: File;
+  progress = 0;
+  message = '';
+
+
 
   constructor(private token: TokenStorageService,
               private roomService: RoomService,
-              private router: Router) { }
+              private router: Router,
+              private uploadPhotosService: UploadPhotosService) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
@@ -38,8 +47,17 @@ export class AddARoomComponent implements OnInit {
     }
   }
 
+
+
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+
+
   save(): void {
 
+    // Validate that all fields are non empty
     if (!Validate.text(this.room.title) ||
         !Validate.text(this.room.country) ||
         !Validate.text(this.room.city) ||
@@ -47,20 +65,66 @@ export class AddARoomComponent implements OnInit {
         !Validate.text(this.room.address) ||
         !Validate.text(this.room.description) ||
         !this.room.numBeds ||
-        !this.room.pricePerDay) {
+        !this.room.pricePerDay ||
+        !this.selectedFiles) {
       console.log('INPUT ERROR');
       this.invalidInput = true;
       this.success = false;
       return;
     }
 
-    console.log('Gonna save ' + JSON.stringify(this.room));
     this.invalidInput = false;
 
+
+
+    // Add all room info except the main photo url
     this.roomService.put(this.room).subscribe(
+      data => {
+
+        const roomId = data.id;
+        this.currentFile = this.selectedFiles.item(0);
+
+        // Upload main photo
+        this.uploadPhotosService.upload(this.currentFile, String(roomId)).subscribe(
+          event => {
+            if (event.type === HttpEventType.UploadProgress) {
+              this.progress = Math.round(100 * event.loaded / event.total);
+            } else if (event instanceof HttpResponse) {
+              this.message = event.body.message;
+              this.success = true;
+
+              // Get main photo url
+              const mainPhotoUrl = event.body.url;
+
+              // Update record of room with main photo url
+              this.roomService.addMainPhoto(roomId, mainPhotoUrl).subscribe(
+                // tslint:disable-next-line:no-shadowed-variable
+                data => {
+                  this.message = data.message;
+                  this.success = true;
+
+                  // Redirect to my-rooms
+                  this.router.navigate(['/my-rooms'], {queryParams: {justAdded: 'true'}});
+                },
+                error => {
+                  this.message = 'Could not update main photo!';
+                  this.success = false;
+                }
+              );
+              }
+          },
+          err => {
+            this.progress = 0;
+            this.message = 'Could not upload the file!';
+            this.success = false;
+            this.currentFile = undefined;
+            console.log('Could not upload photo!');
+          });
+      },
       () => {
-        this.success = true;
-        this.router.navigate(['/my-rooms'], { queryParams: { justAdded: 'true' } });
+        this.message = 'Could not add room!';
+        this.success = false;
+        console.log('Could not add room!');
       }
     );
   }

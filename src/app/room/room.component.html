@@ -15,17 +15,21 @@
 </div>
 
 <div  *ngIf="pageEvent">
-
-    <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-list cols="2" rowHeight="1:1">
       <ng-container>
         <div *ngFor="let i of numbers">
             <mat-grid-tile *ngIf="getRoom(getPageIndex()*pageSize + i)">
-                <a routerLink="/room/{{getRoom(getPageIndex()*pageSize + i).id}}">
-                    {{ getRoom(getPageIndex()*pageSize + i).description }} with id {{ getRoom(getPageIndex()*pageSize + i).id }}
-                </a>
+              <div class="card" style="width: 18rem;">
+                <img style="height:256px" class="card-img-top" src="{{getRoom(getPageIndex()*pageSize + i).mainPhotoUrl}}">
+                <div class="card-body">
+                  <h2 class="card-title">{{ getRoom(getPageIndex()*pageSize + i).title }}</h2>
+                  <p class="card-text">Price per day: {{getRoom(getPageIndex()*pageSize + i).pricePerDay}}</p>
+                  <a routerLink="/room/{{getRoom(getPageIndex()*pageSize + i).id}}" class="btn btn-primary">View details</a>
+                </div>
+              </div>
+
             </mat-grid-tile>
         </div>
       </ng-container>
     </mat-grid-list>
-
 </div>

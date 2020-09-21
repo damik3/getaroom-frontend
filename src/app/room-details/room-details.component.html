@@ -11,6 +11,7 @@
     {{ room.description }}
   </p>
 
+  <hr>
   <p>
     <label><strong>Location: </strong></label><br>
     Country: {{ room.country }}
@@ -19,24 +20,39 @@
     <br>Address: {{ room.address }}
   </p>
 
+  <hr>
   <p>
     <label><strong>Number of beds: </strong></label><br>
     {{ room.numBeds }}
   </p>
 
+  <hr>
   <p>
     <label><strong>Price per day: </strong></label><br>
     {{ room.pricePerDay }}
   </p>
 
+  <hr>
   <p>
-    <label><strong>Owner info</strong></label><br>
+    <label><strong>Owner info:</strong></label><br>
     Name: {{ room.owner.surname }} {{ room.owner.name }}
     <br>Email: {{ room.owner.email }}
     <br> Phone: {{ room.owner.phone }}
   </p>
 
-  <button *ngIf="currentUser" type="button" class="btn btn-primary" (click)="book()">Book now!</button>
+  <hr>
+  <p>
+    <label><strong>See room photos:</strong></label><br>
+    <a routerLink="/room/{{room.id}}/photos">
+      <button class="btn btn-success">Photos</button>
+    </a>
+  </p>
+
+  <hr>
+  <p>
+    <label><strong>Book room now:</strong></label><br>
+      <button *ngIf="currentUser" class="btn btn-primary" (click)="book()">Book</button>
+  </p>
 
 </div>
 
