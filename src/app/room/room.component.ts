@@ -16,7 +16,9 @@ export class RoomComponent implements OnInit {
 
   // MatPaginator inputs
   length: number;
-  pageSize = 4;
+
+  // Rooms per page
+  pageSize = 10;
 
   // MatPaginator output
   pageEvent: PageEvent;
