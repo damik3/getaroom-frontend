@@ -27,6 +27,14 @@ export class RoomService {
     return this.http.post(API_URL, room, { responseType: 'json' });
   }
 
+  update(room: Room): Observable<any> {
+    return this.http.put(API_URL + room.id, room, { responseType: 'json' });
+  }
+
+  delete(roomId: string): Observable<any> {
+    return this.http.delete(API_URL + roomId, { responseType: 'json' });
+  }
+
   search(searchQuery: SearchQuery): Observable<any> {
     return this.http.post(SEARCH_API_URL, searchQuery, { responseType: 'json' });
   }

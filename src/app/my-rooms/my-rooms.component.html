@@ -8,6 +8,14 @@
   You just added a room!
 </div>
 
+<div class="alert alert-success" role="alert" *ngIf="justDeleted === 'true'">
+  You just deleted a room!
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+
 <table class="table table-sm">
   <tbody>
     <tr *ngFor="let room of fullCurrentUser.rooms">
@@ -23,11 +31,11 @@
       </td>
       <td>
         <a routerLink="/room/{{room.id}}/add-photos">
-          <button type="button" class="btn btn-sm btn-success" (click)="justAdded">Add photos</button>
+          <button type="button" class="btn btn-sm btn-success">Add photos</button>
         </a>
       </td>
       <td>
-        <button type="button" class="btn btn-sm btn-danger" (click)="justAdded">Delete</button>
+        <button type="button" class="btn btn-sm btn-danger" (click)="deleteRoom(room)">Delete</button>
       </td>
     </tr>
   </tbody>
