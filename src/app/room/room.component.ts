@@ -14,14 +14,12 @@ export class RoomComponent implements OnInit {
   rooms = null;
   numbers = null;
 
-  // MatPaginator inputs
+  // MatPaginator
   length: number;
+  pageEvent: PageEvent;
 
   // Rooms per page
   pageSize = 10;
-
-  // MatPaginator output
-  pageEvent: PageEvent;
 
   query: SearchQuery;
   showAll: boolean;
@@ -64,6 +62,18 @@ export class RoomComponent implements OnInit {
         this.roomService.getAll().subscribe(
           data => {
             this.rooms = data;
+
+            // Sort rooms from lowest price to highest
+            this.rooms = this.rooms.sort((n1, n2) => {
+              if (n1.pricePerDay > n2.pricePerDay) {
+                return 1;
+              }
+              if (n1.pricePerDay < n2.pricePerDay) {
+                return -1;
+              }
+              return 0;
+            });
+
             this.length = data.length;
             this.err = false;
           },
@@ -78,6 +88,18 @@ export class RoomComponent implements OnInit {
         this.roomService.search(this.query).subscribe(
           data => {
             this.rooms = data;
+
+            // Sort rooms from lowest price to highest
+            this.rooms = this.rooms.sort((n1, n2) => {
+              if (n1.pricePerDay > n2.pricePerDay) {
+                return 1;
+              }
+              if (n1.pricePerDay < n2.pricePerDay) {
+                return -1;
+              }
+              return 0;
+            });
+
             this.length = data.length;
             this.err = false;
           },
