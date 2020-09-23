@@ -30,7 +30,6 @@ export class MyRoomsComponent implements OnInit {
     if (!this.currentUser) {
       this.router.navigate(['/', 'login']);
     }
-    console.log('this.user = ' + JSON.stringify(this.currentUser));
 
     // Get, if any, request parameters
     this.route.queryParams.subscribe(params => {
@@ -41,7 +40,6 @@ export class MyRoomsComponent implements OnInit {
     this.userService.getUser(this.currentUser.id).subscribe(
       data => {
         this.fullCurrentUser = data;
-        console.log('this.fullcurrentuser = ' + JSON.stringify(this.fullCurrentUser));
       }
     );
   }
@@ -50,7 +48,6 @@ export class MyRoomsComponent implements OnInit {
 
   deleteRoom(room: any): void {
     if (confirm('Are you sure you want to delete this room?')) {
-      console.log('gonna delete');
 
       this.roomService.delete(room.id).subscribe(
         () => {

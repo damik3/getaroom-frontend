@@ -31,7 +31,6 @@ export class UserDetailsComponent implements OnInit {
     this.userService.getUser(id).subscribe(
       data => {
         this.user = data;
-        console.log('user = ' + JSON.stringify(this.user));
       },
       err => {
         this.errorMessage = err.error.message;

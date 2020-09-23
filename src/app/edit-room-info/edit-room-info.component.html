@@ -1,1 +1,179 @@
-<p>edit-room-info works!</p>
+<header class="jumbotron">
+  <h3>
+    <strong>Edit room</strong>
+  </h3>
+</header>
+
+<form
+  *ngIf="!errorMessage"
+  name="form"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
+
+  <!-- Title -->
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input id="title"
+           type="text"
+           class="form-control"
+           name="title"
+           required
+           #title="ngModel"
+           [(ngModel)]="room.title"
+    >
+    <div class="alert-danger" *ngIf="f.submitted && title.invalid">
+    <div *ngIf="title.errors.required">Title is required</div>
+    </div>
+  </div>
+
+
+
+  <!-- Country -->
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input id="country"
+           type="text"
+           class="form-control"
+           name="country"
+           required
+           #country="ngModel"
+           [(ngModel)]="room.country"
+    >
+    <div class="alert-danger" *ngIf="f.submitted && country.invalid">
+      <div *ngIf="country.errors.required">Country is required</div>
+    </div>
+  </div>
+
+
+
+  <!-- City -->
+  <div class="form-group">
+    <label for="city">City</label>
+    <input id="city"
+           type="text"
+           class="form-control"
+           name="city"
+           required
+           #city="ngModel"
+           [(ngModel)]="room.city"
+    >
+    <div class="alert-danger" *ngIf="f.submitted && city.invalid">
+      <div *ngIf="city.errors.required">City is required</div>
+    </div>
+  </div>
+
+
+
+  <!-- Area -->
+  <div class="form-group">
+    <label for="area">Area</label>
+    <input id="area"
+           type="text"
+           class="form-control"
+           name="area"
+           required
+           #area="ngModel"
+           [(ngModel)]="room.area"
+    >
+    <div class="alert-danger" *ngIf="f.submitted && area.invalid">
+      <div *ngIf="area.errors.required">Area is required</div>
+    </div>
+  </div>
+
+
+
+  <!-- Address -->
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input id="address"
+           type="text"
+           class="form-control"
+           name="address"
+           required
+           #address="ngModel"
+           [(ngModel)]="room.address"
+    >
+    <div class="alert-danger" *ngIf="f.submitted && address.invalid">
+      <div *ngIf="address.errors.required">Address is required</div>
+    </div>
+  </div>
+
+
+
+  <!-- Number of beds -->
+  <div class="form-group">
+    <label for="numBeds">Number of beds</label>
+    <input id="numBeds"
+           class="form-control"
+           name="numBeds"
+           required
+           #numBeds="ngModel"
+           [(ngModel)]="room.numBeds"
+    >
+    <div class="alert-danger" *ngIf="f.submitted && numBeds.invalid">
+      <div *ngIf="numBeds.errors.required">Number of beds is required</div>
+    </div>
+  </div>
+
+
+
+  <!-- Price per day -->
+  <div class="form-group">
+    <label for="pricePerDay">Price per day</label>
+    <input id="pricePerDay"
+           class="form-control"
+           name="pricePerDay"
+           required
+           #pricePerDay="ngModel"
+           [(ngModel)]="room.pricePerDay"
+    >
+    <div class="alert-danger" *ngIf="f.submitted && pricePerDay.invalid">
+      <div *ngIf="pricePerDay.errors.required">Price per day is required</div>
+    </div>
+  </div>
+
+
+
+  <!-- Description -->
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input id="description"
+           type="text"
+           class="form-control"
+           name="description"
+           required
+           #description="ngModel"
+           [(ngModel)]="room.description"
+    >
+    <div class="alert-danger" *ngIf="f.submitted && description.invalid">
+      <div *ngIf="description.errors.required">Description is required</div>
+    </div>
+  </div>
+
+
+
+  <!-- Success -->
+  <div class="alert alert-success" *ngIf="isSuccessful">
+    Room info updated!
+  </div>
+
+
+
+
+
+
+  <!-- Submit -->
+  <div class="form-group">
+    <button class="btn btn-primary btn-block">Save</button>
+  </div>
+
+  <!-- Failure -->
+  <div class="alert alert-warning" *ngIf="f.submitted && isFailed">
+    {{ errorMessage }}
+  </div>
+
+</form>
+
+

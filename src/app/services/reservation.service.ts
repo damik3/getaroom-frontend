@@ -22,7 +22,6 @@ export class ReservationService {
     this.dateFrom = new MyDate();
     this.dateTo = new MyDate();
     this.room = new Room();
-    console.log('CONSTRUCTOR OF RESERVATION SERVICE BITS');
   }
 
   make(r: Reservation): Observable<any> {
