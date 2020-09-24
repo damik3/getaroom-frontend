@@ -49,9 +49,9 @@
   </p>
 
   <hr>
-  <p>
+  <p *ngIf="currentUser">
     <label><strong>Book room now:</strong></label><br>
-      <button *ngIf="currentUser" class="btn btn-primary" (click)="book()">Book</button>
+      <button class="btn btn-primary" (click)="book()">Book</button>
   </p>
 
 </div>
